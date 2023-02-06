@@ -1,3 +1,3 @@
 # CeltreSoftware's CPUID Library
 
-TODO: Fill me in
+Library to use the __cpuid extensions in a cross platform manner.
