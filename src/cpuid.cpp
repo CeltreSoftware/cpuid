@@ -31,7 +31,7 @@
 #elif defined CELTRESOFT_CPUID_HAS_GNU_CLANG_CPUID_H
 #  include <cpuid.h>
 #elif defined CELTRESOFT_CPUID_CAN_HAVE_ASM_CPUID
-#  ifndef CELTRESOFT_CPUID_64BIT
+#  ifndef CELTRESOFT_ARCH_64BIT
 #    define __cpuid(level, a, b, c, d)                                         \
       do {                                                                     \
         if (level && level != 1) {                                             \
@@ -44,7 +44,7 @@
                        : "0"(level), "1"(0), "2"(0));                          \
         }                                                                      \
       } while (0)
-#  else // CELTRESOFT_CPUID_64BIT
+#  else // CELTRESOFT_ARCH_64BIT
 #    define __cpuid(level, a, b, c, d)                                         \
       asm volatile("cpuid" : "=a"(a), "=b"(b), "=c"(c), "=d"(d) : "0"(level))
 #  endif // CELTRESOFT_CPUID_64BIT

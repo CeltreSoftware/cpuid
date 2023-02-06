@@ -25,7 +25,7 @@
 cmake_minimum_required(VERSION 3.23)
 project(
   CELTRE_SOFTWARE_CPUID
-  VERSION 1.1.0.0
+  VERSION 1.1.1.0
   DESCRIPTION
     "Library to use the __cpuid extensions in a cross platform manner."
   HOMEPAGE_URL "https://github.com/CeltreSoftware/cpuid"
@@ -56,8 +56,11 @@ else()
 endif()
 
 set_target_properties(
-  ${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION}
-                             SOVERSION ${PROJECT_VERSION_MAJOR})
+  ${PROJECT_NAME}
+  PROPERTIES VERSION ${PROJECT_VERSION}
+             SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
+
+target_link_libraries(${PROJECT_NAME} PUBLIC CELTRE_SOFTWARE_PREPROCESSOR)
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
 target_compile_options(
@@ -206,18 +209,10 @@ target_compile_options(
     $<$<AND:$<CXX_COMPILER_ID:Clang>,$<COMPILE_LANGUAGE:CXX>>:-fcolor-diagnostics>
 )
 
-target_include_directories(
-  ${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include
-                         ${CELTRE_SOFTWARE_PREPROCESSOR_SOURCE_DIR}/include)
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
 if(WINDOWS_EXPORT_SYMBOLS)
   set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
-endif()
-
-if(${CMAKE_SIZEOF_VOID_P} STREQUAL 8)
-  target_compile_definitions(${PROJECT_NAME} PUBLIC CELTRESOFT_CPUID_64BIT)
-else()
-  target_compile_definitions(${PROJECT_NAME} PUBLIC CELTRESOFT_CPUID_32BIT)
 endif()
 
 include(CheckCXXSourceCompiles)

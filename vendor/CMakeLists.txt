@@ -25,8 +25,8 @@
 include(FetchContent)
 
 FetchContent_Declare(
-  CELTRE_SOFTWARE_PREPROCESSOR
+  celtresoft_preproc
   GIT_REPOSITORY https://github.com/CeltreSoftware/preprocessor.git
   GIT_TAG main)
 
-FetchContent_MakeAvailable(CELTRE_SOFTWARE_PREPROCESSOR)
+FetchContent_MakeAvailable(celtresoft_preproc)
