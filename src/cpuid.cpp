@@ -22,7 +22,7 @@
 // SOFTWARE.
 //==============================================================================
 
-#include "celtresoft/cpuid/cpuid_impl.hpp"
+#include "celtresoft/cpuid.hpp"
 
 #include <array>
 

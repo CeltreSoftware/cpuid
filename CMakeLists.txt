@@ -25,7 +25,7 @@
 cmake_minimum_required(VERSION 3.23)
 project(
   CELTRE_SOFTWARE_CPUID
-  VERSION 0.0.0
+  VERSION 1.0.0
   DESCRIPTION
     "Library to use the __cpuid extensions in a cross platform manner."
   HOMEPAGE_URL "https://github.com/CeltreSoftware/cpuid"
@@ -46,8 +46,8 @@ target_precompile_headers(${PROJECT_NAME} PUBLIC <array> <cstdint>)
 
 target_sources(
   ${PROJECT_NAME}
-  PUBLIC ${PROJECT_SOURCE_DIR}/include/celtresoft/cpuid/cpuid_impl.hpp
-  PRIVATE ${PROJECT_SOURCE_DIR}/src/cpuid_impl.cpp)
+  PUBLIC ${PROJECT_SOURCE_DIR}/include/celtresoft/cpuid.hpp
+  PRIVATE ${PROJECT_SOURCE_DIR}/src/cpuid.cpp)
 
 if(WIN32)
   set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME CeltreSoftCpuId)
