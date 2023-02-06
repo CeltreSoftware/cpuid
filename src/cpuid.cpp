@@ -52,35 +52,35 @@
 #  error "__cpuid not supported on this platform"
 #endif // CELTRESOFT_CPUID_HAS_WIN_INTRIN_H
 
-namespace celtresoft::cpuid {
-cpuid_impl::cpuid_impl(std::uint32_t info_type) { run_cpuid(info_type); }
+namespace celtresoft {
+cpuid::cpuid(std::uint32_t info_type) { run_cpuid(info_type); }
 
-[[nodiscard]] auto cpuid_impl::eax() const noexcept -> std::uint32_t const& {
+[[nodiscard]] auto cpuid::eax() const noexcept -> std::uint32_t const& {
   return _regs[0];
 }
 
-[[nodiscard]] auto cpuid_impl::ebx() const noexcept -> std::uint32_t const& {
+[[nodiscard]] auto cpuid::ebx() const noexcept -> std::uint32_t const& {
   return _regs[1];
 }
 
-[[nodiscard]] auto cpuid_impl::ecx() const noexcept -> std::uint32_t const& {
+[[nodiscard]] auto cpuid::ecx() const noexcept -> std::uint32_t const& {
   return _regs[2];
 }
 
-[[nodiscard]] auto cpuid_impl::edx() const noexcept -> std::uint32_t const& {
+[[nodiscard]] auto cpuid::edx() const noexcept -> std::uint32_t const& {
   return _regs[3];
 }
 
-auto cpuid_impl::operator=(std::uint32_t info_type) -> cpuid_impl& {
+auto cpuid::operator=(std::uint32_t info_type) -> cpuid& {
   run_cpuid(info_type);
   return *this;
 }
 
-auto        cpuid_impl::run_cpuid(std::uint32_t info_type) -> void {
+auto        cpuid::run_cpuid(std::uint32_t info_type) -> void {
 #if defined CELTRESOFT_CPUID_HAS_WIN_INTRIN_H
   __cpuid(_regs.data(), static_cast<int>(info_type));
 #else
   __cpuid(static_cast<int>(info_type), _regs[0], _regs[1], _regs[2], _regs[3]);
 #endif // CELTRESOFT_CPUID_HAS_WIN_INTRIN_H
 }
-} // namespace celtresoft::cpuid
+} // namespace celtresoft

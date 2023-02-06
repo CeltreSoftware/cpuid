@@ -30,23 +30,23 @@
 
 #include <celtresoft/preproc/visibility.hpp>
 
-namespace celtresoft::cpuid {
-class CELTRESOFT_API_EXPORT cpuid_impl {
+namespace celtresoft {
+class CELTRESOFT_API_EXPORT cpuid {
 public:
-  explicit cpuid_impl(std::uint32_t info_type);
+  explicit cpuid(std::uint32_t info_type);
 
   [[nodiscard]] auto eax() const noexcept -> std::uint32_t const&;
   [[nodiscard]] auto ebx() const noexcept -> std::uint32_t const&;
   [[nodiscard]] auto ecx() const noexcept -> std::uint32_t const&;
   [[nodiscard]] auto edx() const noexcept -> std::uint32_t const&;
 
-  auto operator=(std::uint32_t info_type) -> cpuid_impl&;
+  auto operator=(std::uint32_t info_type) -> cpuid&;
 
 private:
   std::array<std::uint32_t, 4> _regs{};
 
   auto run_cpuid(std::uint32_t info_type) -> void;
 };
-} // namespace celtresoft::cpuid
+} // namespace celtresoft
 
 #endif // CELTRESOFT_CPUID_CPUID_IMPL_HPP
