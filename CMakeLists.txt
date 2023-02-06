@@ -25,7 +25,7 @@
 cmake_minimum_required(VERSION 3.23)
 project(
   CELTRE_SOFTWARE_CPUID
-  VERSION 1.0.0
+  VERSION 1.0.0.1
   DESCRIPTION
     "Library to use the __cpuid extensions in a cross platform manner."
   HOMEPAGE_URL "https://github.com/CeltreSoftware/cpuid"

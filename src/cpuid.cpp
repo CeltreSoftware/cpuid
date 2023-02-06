@@ -44,10 +44,10 @@
                        : "0"(level), "1"(0), "2"(0));                          \
         }                                                                      \
       } while (0)
-#  else
+#  else // CELTRESOFT_CPUID_64BIT
 #    define __cpuid(level, a, b, c, d)                                         \
       asm volatile("cpuid" : "=a"(a), "=b"(b), "=c"(c), "=d"(d) : "0"(level))
-#  endif
+#  endif // CELTRESOFT_CPUID_64BIT
 #else
 #  error "__cpuid not supported on this platform"
 #endif // CELTRESOFT_CPUID_HAS_WIN_INTRIN_H
