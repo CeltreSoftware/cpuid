@@ -26,3 +26,32 @@ BasedOnStyle: LLVM
 
 IndentWidth: 2
 ColumnLimit: 80
+AlignConsecutiveAssignments: Consecutive
+AlignConsecutiveBitFields: Consecutive
+AlignConsecutiveDeclarations: Consecutive
+AlignConsecutiveMacros: Consecutive
+AlignTrailingComments: true
+AlwaysBreakTemplateDeclarations: Yes
+IndentPPDirectives: AfterHash
+PointerAlignment: Left
+ReferenceAlignment: Left
+QualifierAlignment: Right
+
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '^<celtresoft'
+    Priority: 2
+    SortPriority: 2
+    CaseSensitive: true
+  - Regex: '^"celtresoft'
+    Priority: 3
+    SortPriority: 3
+    CaseSensitive: true
+  - Regex: '^"'
+    Priority: 4
+    SortPriority: 4
+    CaseSensitive: true
+  - Regex: '^<'
+    Priority: 1
+    SortPriority: 1
+    CaseSensitive: true
